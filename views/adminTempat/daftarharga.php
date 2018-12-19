@@ -80,44 +80,41 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4"></div>
-        <div class="text-center col-lg-4">
-          <h4>Input Harga</h4>
+        <div class="text-center">
+          <h4>Daftar Harga</h4>
           <br>
-          <form action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_print&f=isiharga'?>" method="POST">
-            <div class="form-group text-left">
-              <label for="nama">Harga Print A4 per Lembar HP:</label>
-              <input type="number" class="form-control" id="hargaa4hp" name="hargaa4hp">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Harga Print F4 per Lembar HP:</label>
-              <input type="number" class="form-control" id="hargaf4hp" name="hargaf4hp">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Harga Print A4 per Lembar CLR</label>
-              <input type="number" class="form-control" id="hargaa4clr" name="hargaa4clr">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Harga Print F4 per Lembar CLR</label>
-              <input type="number" class="form-control" id="hargaf4clr" name="hargaf4clr">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Diambil:</label>
-              <input type="number" class="form-control" id="diambil" name="diambil">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Diantar:</label>
-              <input type="number" class="form-control" id="diantar" name="diantar">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Jilid</label>
-              <input type="number" class="form-control" id="jilid" name="jilid">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Staples</label>
-              <input type="number" class="form-control" id="staples" name="staples">
-            </div>
-            <button type="submit" class="btn btn-default form-control">Simpan</button>
-          </form>
+          <div class="text-left">
+            <table class="table borderless">
+
+                <tr>Harga Kertas A4 Hitam Putih
+                  <td></td>
+                </tr>
+
+              <tbody>
+                <?php
+                require './models/m_harga.php';
+                $model = new m_harga();
+                $print = $model->showAll();
+                foreach ($print as $print) {
+
+                  ?>
+                <tr>
+                  <td><?php echo $print['hargaa4hp']; ?></td>
+                  <td><?php echo $print['hargaf4hp']; ?></td>
+                  <td><?php echo $print['hargaa4clr']; ?></td>
+                  <td><?php echo $print['hargaf4clr']; ?></td>
+                  <td><?php echo $print['diambil']; ?></td>
+                  <td><?php echo $print['diantar']; ?></td>
+                  <td><?php echo $print['jilid']; ?></td>
+                  <td><?php echo $print['staples']; ?></td>
+                  <td></td>
+                  <td><a href="#" class="btn btn-info">Detail Harga</a></td>
+
+                </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
         </div>
 
         <div class="col-lg-4"></div>

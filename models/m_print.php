@@ -10,6 +10,10 @@ class m_print{
 		$result   = $this->db->query("select * from print");
 		return $result;
 	}
+	function donePrint(){
+		$result   = $this->db->query("select * from print where status_print = 'sudah diprint'");
+		return $result;
+	}
 
 	function getData($id_print){
 		$result   = $this->db->query("select * from print where id_print='$id_print'");
@@ -20,8 +24,8 @@ class m_print{
 		$this->db->query("delete from print where id_print='$id'");
 	}
 
-	function tambahPrint($nama_file, $tempat_print , $alamat, $nama_customer, $penerima){
-		$this->db->executeQuery("insert into print values(NULL, now(), '$tempat_print', '$nama_file', '$nama_customer', '$alamat', 'Belum Diprint', 'Belum Diterima','$penerima')");
+	function tambahPrint($nama_file, $tempat_print , $kertas_print, $alamat, $nama_customer, $penerima){
+		$this->db->executeQuery("insert into print values(NULL, now(), '$tempat_print',  '$kertas_print', '$nama_file', '$nama_customer', '$alamat', 'Belum Diprint', 'Belum Diterima','$penerima')");
 	}
 
 	function updatePrint($id){

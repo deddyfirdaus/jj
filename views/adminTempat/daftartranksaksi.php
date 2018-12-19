@@ -34,8 +34,8 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=homeTempatPrint'?>">Antrian</a></li>
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=sudahDiprint'?>">Sudah Diprint</a></li>
-            <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">List Tranksaksi</a></li>
-            <li class="active"><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=inputHarga'?>">Input Harga</a></li>
+            <li class="active"><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">List Tranksaksi</a></li>
+            <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=inputHarga'?>">Input Harga</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username']; ?></a></li>
@@ -77,52 +77,39 @@
       </div>
     </nav>
     <br>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="text-center col-lg-4">
-          <h4>Input Harga</h4>
-          <br>
-          <form action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_print&f=isiharga'?>" method="POST">
-            <div class="form-group text-left">
-              <label for="nama">Harga Print A4 per Lembar HP:</label>
-              <input type="number" class="form-control" id="hargaa4hp" name="hargaa4hp">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Harga Print F4 per Lembar HP:</label>
-              <input type="number" class="form-control" id="hargaf4hp" name="hargaf4hp">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Harga Print A4 per Lembar CLR</label>
-              <input type="number" class="form-control" id="hargaa4clr" name="hargaa4clr">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Harga Print F4 per Lembar CLR</label>
-              <input type="number" class="form-control" id="hargaf4clr" name="hargaf4clr">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Diambil:</label>
-              <input type="number" class="form-control" id="diambil" name="diambil">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Diantar:</label>
-              <input type="number" class="form-control" id="diantar" name="diantar">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Jilid</label>
-              <input type="number" class="form-control" id="jilid" name="jilid">
-            </div>
-            <div class="form-group text-left">
-              <label for="nama">Staples</label>
-              <input type="number" class="form-control" id="staples" name="staples">
-            </div>
-            <button type="submit" class="btn btn-default form-control">Simpan</button>
-          </form>
-        </div>
+    <div class="text-center">
+      <table class="table borderless">
+        <thead style="color: white; background-color: #5D4B3E; border-color:  #5D4B3E;">
+          <tr>
+            <th class="text-center">Nomor</th>
+            <th class="text-center">Tanggal</th>
+            <th class="text-center">Nama File</th>
+            <th class="text-center">Nama Customer</th>
+            <th class="text-center">Total Harga</th>
+            <th class="text-center">Detail Harga</th>
 
-        <div class="col-lg-4"></div>
-      </div>
-    </div>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          require './models/m_print.php';
+          $model = new m_print();
+          $print = $model->donePrint();
+          foreach ($print as $print) {
+            $idwew = $print['id_print'];
+            ?>
+          <tr>
+            <td><?php echo $print['id_print']; ?></td>
+            <td><?php echo $print['tanggal']; ?></td>
+            <td><?php echo $print['nama_file']; ?></td>
+            <td><?php echo $print['nama_customer']; ?></td>
+            <td></td>
+            <td><a href="#" class="btn btn-info">Detail Harga</a></td>
+
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
   </div>
 </body>
 <script>

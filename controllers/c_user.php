@@ -30,6 +30,7 @@
       $model = new m_user();
       $model->updateUsers($id_user, $username, $password);
     }
+  
 
     function registerPengeprint(){
       $username = $_POST['username'];
@@ -101,7 +102,14 @@
     function sudahDiprint(){
       include('./views/adminTempat/sudahdiprint.php');
     }
+    function daftarTranksaksi(){
+      include('./views/adminTempat/daftartranksaksi.php');
+    }
     function daftarHarga(){
+      include('./views/adminTempat/daftarharga.php');
+    }
+
+    function inputHarga(){
       include('./views/adminTempat/inputharga.php');
     }
 

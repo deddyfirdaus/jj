@@ -51,7 +51,7 @@
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title" id="myModalLabel">Edit Users</h4>
 						</div>
-						<form method="POST" action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=edit'?>">
+						<form method="POST" action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=editPengeprint'?>">
 							<div class="modal-body">
 								<div class="form-group">
 									<label for="username">Username</label>
@@ -62,7 +62,7 @@
 									<input type="password" class="form-control" id="password" name="password">
 								</div>
 								<button type="submit" class="btn btn-default">Simpan</button>
-								<input type="hidden" name="id_user" id="id">
+								<input type="text" name="id_user" id="id">
 							</div>
 						</form>
 					</div>
@@ -128,7 +128,7 @@
 						<br>
 						<div class="form-group">
 							<label for="OpsiKertas">Opsi Kertas</label>
-							<select class="form-control" id="tempat-print" name="tempat_print">
+							<select class="form-control" id="kertas-print" name="kertas_print">
 								<?php
 								require './models/m_kertas.php';
 								$model = new m_kertas();
@@ -146,7 +146,6 @@
 					</div>
 					<div class="col-lg-4"></div>
 				</div>
-			</div>
 		</div>
 		<br>
 		<br>
