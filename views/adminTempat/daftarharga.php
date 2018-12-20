@@ -34,8 +34,9 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=homeTempatPrint'?>">Antrian</a></li>
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=sudahDiprint'?>">Sudah Diprint</a></li>
-            <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">List Tranksaksi</a></li>
-            <li class="active"><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=inputHarga'?>">Input Harga</a></li>
+            <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarTranksaksi'?>">List Tranksaksi</a></li>
+            <li ><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=inputHarga'?>">Input Harga</a></li>
+            <li class="active"><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">Daftar Harga</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username']; ?></a></li>
@@ -58,7 +59,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Edit Users</h4>
             </div>
-            <form method="POST" action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=edit'?>">
+            <form method="POST" action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=editPengeprint'?>">
               <div class="modal-body">
                 <div class="form-group">
                   <label for="username">Username</label>
@@ -69,7 +70,7 @@
                   <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <button type="submit" class="btn btn-default">Simpan</button>
-                <input type="hidden" name="id_user" id="id">
+                <input type="hidden" name="id_users" id="id_users">
               </div>
             </form>
           </div>

@@ -36,6 +36,7 @@
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=sudahDiprint'?>">Sudah Diprint</a></li>
             <li class="active"><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">List Tranksaksi</a></li>
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=inputHarga'?>">Input Harga</a></li>
+            <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">Daftar Harga</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username']; ?></a></li>
@@ -75,8 +76,41 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="modalDetailharga" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Detail Harga</h4>
+            </div>
+
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Harga print a4</label><br>
+                  <label>500</label>
+                </div>
+
+              </div>
+
+          </div>
+        </div>
+      </div>
     </nav>
     <br>
+
+    <?php
+    $halamanaktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] :1;
+    $jumlahData = 6;
+    $jumlahdataperHalaman =2;
+    $jumlahhalaman = ceil( $jumlahData/ $jumlahdataperHalaman);
+    for ($i=1; $i <=$jumlahhalaman ; $i++) : ?>
+    <?php if ($i == $halamanaktif) : ?>
+      <a href="?halaman=<?= $i;  ?>" style="font-weight: bold; color: red;"><?= $i;  ?></a>
+    <?php else  : ?>
+        <a href="?halaman=<?= $i;  ?>"><?= $i;  ?></a>
+    <?php endif ; ?>
+  <?php endfor; ?>
     <div class="text-center">
       <table class="table borderless">
         <thead style="color: white; background-color: #5D4B3E; border-color:  #5D4B3E;">
@@ -94,7 +128,7 @@
           <?php
           require './models/m_print.php';
           $model = new m_print();
-          $print = $model->donePrint();
+          $print = $model->showAllsbg(2,$halamanaktif);
           foreach ($print as $print) {
             $idwew = $print['id_print'];
             ?>
@@ -104,7 +138,7 @@
             <td><?php echo $print['nama_file']; ?></td>
             <td><?php echo $print['nama_customer']; ?></td>
             <td></td>
-            <td><a href="#" class="btn btn-info">Detail Harga</a></td>
+            <td><a href="#"   onclick="setData(<?php echo $print['id_print']; ?>)" data-toggle="modal" data-target="#modalDetailharga" class="btn btn-info">Detail Harga</a></td>
 
           </tr>
         <?php } ?>

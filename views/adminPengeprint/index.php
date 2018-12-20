@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +64,7 @@
 									<input type="password" class="form-control" id="password" name="password">
 								</div>
 								<button type="submit" class="btn btn-default">Simpan</button>
-								<input type="text" name="id_user" id="id">
+								<input type="text" name="id" id="id">
 							</div>
 						</form>
 					</div>

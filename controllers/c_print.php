@@ -74,6 +74,14 @@ class c_print {
 		$model->updateDiterima($id);
 		$this->config['route']->redirect('c_user','sudahDiprint');
 	}
+	// function pagination(){
+	// 		$jumlahdataperHalaman =2;
+	// 		$halamanaktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] :3;
+	// 		$model = new m_print();
+	// 		$model->showAll($jumlahdataperHalaman, $halamanaktif);
+	//
+	//
+	// }
 
 
 }

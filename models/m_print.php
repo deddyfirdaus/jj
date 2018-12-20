@@ -6,9 +6,26 @@ class m_print{
 		$this->db = new Database('localhost','3306','printkuy','root','');
 	}
 
+	function hitung(){
+
+		$jumlahData = count ($this->db->query("select * from print"));
+		return $jumlahData;
+	}
+
+	function showAllsbg($jumlahdataperHalaman, $halamanaktif){
+		$jumlahData = count ($this->db->query("select * from print"));
+		$jumlahhalaman = ceil( $jumlahData/ $jumlahdataperHalaman);
+			$awaldata = ($jumlahdataperHalaman*$halamanaktif) - $jumlahdataperHalaman;
+			$result   = $this->db->query("select * from print where status_print = 'sudah diprint' LIMIT $awaldata, $jumlahdataperHalaman");
+			return $result;
+
+	}
+
 	function showAll(){
-		$result   = $this->db->query("select * from print");
-		return $result;
+
+			$result   = $this->db->query("select * from print");
+			return $result;
+
 	}
 	function donePrint(){
 		$result   = $this->db->query("select * from print where status_print = 'sudah diprint'");

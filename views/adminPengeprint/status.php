@@ -21,7 +21,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>                        
+						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#"><img src="assets/img/printkuy.png" style="width: 6vw; height: 100%;"></a>
 				</div>
@@ -81,7 +81,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php 
+					<?php
 						require './models/m_print.php';
 						$model = new m_print();
 						$print = $model->showAll();
@@ -104,11 +104,11 @@
 	function setData(id) {
 		var id_user = id;
 			// alert(id);
-			<?php 
+			<?php
 			$model = new m_user();
 			$users = $model->showAll();
 			foreach ($users as $users) {
-				echo "if (id_user==$users[id_users]) 
+				echo "if (id_user==$users[id_users])
 				{\$(\"#username\").val(\"$users[username]\");
 				\$(\"#password\").val(\"$users[password]\");
 				\$(\"#id\").val(\"$users[id_users]\");}";

@@ -30,7 +30,9 @@
       $model = new m_user();
       $model->updateUsers($id_user, $username, $password);
     }
-  
+
+
+
 
     function registerPengeprint(){
       $username = $_POST['username'];
