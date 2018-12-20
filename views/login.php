@@ -66,6 +66,12 @@
     <div class="row">
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
+        <?php
+        if(isset($_SESSION['message'])){
+          echo $_SESSION['message'];
+          unset($_SESSION['message']);
+        }
+        ?>
         <form action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=login'?>" method="POST">
           <div class="form-group">
             <label for="username">Username:</label>

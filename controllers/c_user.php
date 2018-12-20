@@ -73,10 +73,12 @@
               $this->config['route']->redirect('c_user','homeTempatPrint');
             }
           } else {
-            $_SESSION['msg'] = 'akun tidak ada';
+            $_SESSION['message'] = 'akun tidak ada';
+            $this->config['route']->redirect('c_user','loginPage');
           }
         } else {
-          $_SESSION['msg'] = 'username atau password anda salah';
+          $_SESSION['message'] = 'username atau password anda salah';
+          $this->config['route']->redirect('c_user','loginPage');
         }
       }
     }

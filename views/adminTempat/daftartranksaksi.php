@@ -34,7 +34,7 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=homeTempatPrint'?>">Antrian</a></li>
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=sudahDiprint'?>">Sudah Diprint</a></li>
-            <li class="active"><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">List Tranksaksi</a></li>
+            <li class="active"><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarTranksaksi'?>">List Tranksaksi</a></li>
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=inputHarga'?>">Input Harga</a></li>
             <li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=daftarHarga'?>">Daftar Harga</a></li>
           </ul>
@@ -100,15 +100,20 @@
     <br>
 
     <?php
+
+    require './models/m_print.php';
+    $model = new m_print();
+
     $halamanaktif = ( isset($_GET["halaman"]) ) ? $_GET["halaman"] :1;
-    $jumlahData = 6;
+    $getjum = $model->hitung();
+    $jumlahData = $getjum[0]['jumdat'];
     $jumlahdataperHalaman =2;
     $jumlahhalaman = ceil( $jumlahData/ $jumlahdataperHalaman);
     for ($i=1; $i <=$jumlahhalaman ; $i++) : ?>
     <?php if ($i == $halamanaktif) : ?>
-      <a href="?halaman=<?= $i;  ?>" style="font-weight: bold; color: red;"><?= $i;  ?></a>
+      <a href="http://localhost/PrintKuy/index.php?c=c_user&f=daftarTranksaksi&halaman=<?= $i;  ?>" style="font-weight: bold; color: red;"><?= $i;  ?></a>
     <?php else  : ?>
-        <a href="?halaman=<?= $i;  ?>"><?= $i;  ?></a>
+        <a href="http://localhost/PrintKuy/index.php?c=c_user&f=daftarTranksaksi&halaman=<?= $i;  ?>"><?= $i;  ?></a>
     <?php endif ; ?>
   <?php endfor; ?>
     <div class="text-center">
@@ -126,8 +131,7 @@
         </thead>
         <tbody>
           <?php
-          require './models/m_print.php';
-          $model = new m_print();
+
           $print = $model->showAllsbg(2,$halamanaktif);
           foreach ($print as $print) {
             $idwew = $print['id_print'];

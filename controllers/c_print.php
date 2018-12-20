@@ -59,6 +59,10 @@ class c_print {
 			$model->tambahPrint($filebaru, $tempat, $kertas, $alamat, $nama_customer, $penerima);
 			$this->config['route']->redirect('c_user','statusPengeprint');
 		}
+		else{
+			$_SESSION['message'] = 'harap isi file file';
+			$this->config['route']->redirect('c_user','homePengeprint');
+		}
 	}
 
 	function updatePrint(){

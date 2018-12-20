@@ -8,18 +8,18 @@ class m_print{
 
 	function hitung(){
 
-		$jumlahData = count ($this->db->query("select * from print"));
-		return $jumlahData;
+			$jumlahData =  ($this->db->query("select count(id_print) as jumdat from print where status_print = 'sudah diprint'"));
+			return $jumlahData;
 	}
 
 	function showAllsbg($jumlahdataperHalaman, $halamanaktif){
-		$jumlahData = count ($this->db->query("select * from print"));
+		$jumlahData = count ($this->db->query("select * from print where status_print = 'sudah diprint'"));
 		$jumlahhalaman = ceil( $jumlahData/ $jumlahdataperHalaman);
 			$awaldata = ($jumlahdataperHalaman*$halamanaktif) - $jumlahdataperHalaman;
 			$result   = $this->db->query("select * from print where status_print = 'sudah diprint' LIMIT $awaldata, $jumlahdataperHalaman");
 			return $result;
-
 	}
+
 
 	function showAll(){
 

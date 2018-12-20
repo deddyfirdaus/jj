@@ -78,6 +78,12 @@
 				<div class="col-lg-4"></div>
 				<div class="text-center col-lg-4">
 					<h4>Print</h4>
+					<?php
+					if(isset($_SESSION['message'])){
+						echo $_SESSION['message'];
+						unset($_SESSION['message']);
+					}
+					?>
 					<form method="POST" enctype="multipart/form-data" action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_print&f=tambah'?>">
 							<div class="form-group">
 								<label for="file">Pilih File</label>
@@ -154,6 +160,10 @@
 		<br>
 	</body>
 	<script>
+
+
+
+
 		$('input[name="rating"]'&&'input[value=1]').on('change', function() {
 			$('textarea[name="alamat"]').attr('disabled', true).focus();
 		});
