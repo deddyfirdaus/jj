@@ -11,7 +11,11 @@ class m_print{
 			$jumlahData =  ($this->db->query("select count(id_print) as jumdat from print where status_print = 'sudah diprint'"));
 			return $jumlahData;
 	}
+	function hitungblm(){
 
+			$jumlahData =  ($this->db->query("select count(id_print) as jumdat from print where status_print = 'belum diprint'"));
+			return $jumlahData;
+	}
 	function showAllsbg($jumlahdataperHalaman, $halamanaktif){
 		$jumlahData = count ($this->db->query("select * from print where status_print = 'sudah diprint'"));
 		$jumlahhalaman = ceil( $jumlahData/ $jumlahdataperHalaman);
